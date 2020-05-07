@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 
-class NavBar extends StatelessWidget {
+class NavBarResume extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth > 1200) {
-          return DesktopNavBar();
+          return DesktopNavBarResume();
         } else if (constraints.maxWidth >= 800 &&
             constraints.maxWidth <= 1200) {
-          return DesktopNavBar();
+          return DesktopNavBarResume();
         } else {
-          return MobileNavBar();
+          return MobileNavBarResume();
         }
       },
     );
   }
 }
 
-class DesktopNavBar extends StatelessWidget {
+class DesktopNavBarResume extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,31 +31,15 @@ class DesktopNavBar extends StatelessWidget {
         ),
         Row(
           children: [
-            Text(
-              "Home",
-              style:
-                  TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
-            ),
-            SizedBox(
-              width: 40,
-            ),
             InkWell(
               onTap: (){
-                Navigator.pushNamed(context, '/resume');
+                Navigator.pop(context);
               },
               child: Text(
-                "Resume",
+                "Home",
                 style:
-                    TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+                TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
               ),
-            ),
-            SizedBox(
-              width: 40,
-            ),
-            Text(
-              "Portfolio",
-              style:
-                  TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
             ),
             SizedBox(
               width: 40,
@@ -65,11 +49,27 @@ class DesktopNavBar extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(20))),
               color: Colors.pink,
               child: Text(
-                "Get Started",
+                "Resume",
                 style: TextStyle(color: Colors.white),
               ),
               onPressed: () {},
-            )
+            ),
+            SizedBox(
+              width: 40,
+            ),
+            Text(
+              "Portfolio",
+              style:
+              TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+            ),
+            SizedBox(
+              width: 40,
+            ),
+            Text(
+              "Get Started",
+              style:
+              TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+            ),
           ],
         )
       ]),
@@ -77,7 +77,7 @@ class DesktopNavBar extends StatelessWidget {
   }
 }
 
-class MobileNavBar extends StatelessWidget {
+class MobileNavBarResume extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LandingPage extends StatelessWidget {
   List<Widget> pageChildren(double width) {
@@ -18,7 +19,7 @@ class LandingPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20),
               child: Text(
-                "You have taken each and every project handed overto us as a challenge,which You have taken each and every project handed.",
+                "I am ambitious towards for my passion, always believe in hardwork with smartwork.Curious about how the things happen.",
                 style: TextStyle(fontSize: 12, color: Colors.white),
               ),
             ),
@@ -27,17 +28,53 @@ class LandingPage extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(20))),
               color: Colors.white,
               child: Text(
-                "Our Package",
+                "My Work",
                 style: TextStyle(color: Colors.pink),
               ),
               onPressed: () {},
-            )
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Text(
+                "Checkout my profiles over :",
+                style: TextStyle(fontSize: 16, color: Colors.white),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical:8.0),
+              child: InkWell(
+                child: Text('StackOverflow',style: TextStyle(color: Colors.white),),
+                onTap: () async {
+                  final url = "https://stackoverflow.com/users/5137539/anil-kumar?tab=profile";
+                  if (await canLaunch(url)) {
+                    await launch(
+                      url,
+                    );
+                  }
+                },
+              ),
+            ),
+            InkWell(
+              child: Text('GitHub',style: TextStyle(color: Colors.white),),
+              onTap: () async {
+                final url = "https://github.com/anilk98891?tab=repositories";
+                if (await canLaunch(url)) {
+                  await launch(
+                    url,
+                    forceSafariVC: false,
+                  );
+                }
+              },
+            ),
           ],
         ),
       ),
       Padding(
         padding: const EdgeInsets.symmetric(vertical: 20),
-        child: Image.asset("images/lp_image.png",width: width,),
+        child: Image.asset(
+          "images/lp_image.png",
+          width: width,
+        ),
       )
     ];
   }
@@ -49,7 +86,7 @@ class LandingPage extends StatelessWidget {
         if (constraints.maxWidth > 800) {
           return Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: pageChildren(constraints.biggest.width/2),
+            children: pageChildren(constraints.biggest.width / 2),
           );
         } else {
           return Column(
