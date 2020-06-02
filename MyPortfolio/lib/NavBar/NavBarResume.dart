@@ -33,7 +33,7 @@ class DesktopNavBarResume extends StatelessWidget {
           children: [
             InkWell(
               onTap: (){
-                Navigator.pop(context);
+                Navigator.pushNamed(context, '/');
               },
               child: Text(
                 "Home",
@@ -65,10 +65,15 @@ class DesktopNavBarResume extends StatelessWidget {
             SizedBox(
               width: 40,
             ),
-            Text(
-              "Get Started",
-              style:
-              TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+            InkWell(
+              onTap: (){
+                Navigator.pushReplacementNamed(context, '/myWork');;
+              },
+              child: Text(
+                "My Work",
+                style:
+                TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+              ),
             ),
           ],
         )

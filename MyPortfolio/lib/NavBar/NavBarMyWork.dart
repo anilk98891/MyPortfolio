@@ -1,57 +1,57 @@
 import 'package:flutter/material.dart';
 
-class NavBar extends StatelessWidget {
+class NavBarMyWork extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth > 1200) {
-          return DesktopNavBar();
+          return DesktopNavMyWork();
         } else if (constraints.maxWidth >= 800 &&
             constraints.maxWidth <= 1200) {
-          return DesktopNavBar();
+          return DesktopNavMyWork();
         } else {
-          return MobileNavBar();
+          return MobileNavBarMyWork();
         }
       },
     );
   }
 }
 
-class DesktopNavBar extends StatelessWidget {
+class DesktopNavMyWork extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Text(
-          "Anil Kumar Portfolio",
+          "Anil Kumar Work",
           style: TextStyle(
               fontWeight: FontWeight.bold, fontSize: 30, color: Colors.white),
         ),
         Row(
           children: [
-            MaterialButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20))),
-              color: Colors.pink,
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, '/');
+              },
               child: Text(
                 "Home",
-                style: TextStyle(color: Colors.white),
+                style:
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
               ),
-              onPressed: () {},
             ),
             SizedBox(
               width: 40,
             ),
             InkWell(
-              onTap: () {
+              onTap: (){
                 Navigator.pushReplacementNamed(context, '/resume');
               },
               child: Text(
                 "Resume",
                 style:
-                    TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+                TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
               ),
             ),
             SizedBox(
@@ -65,15 +65,15 @@ class DesktopNavBar extends StatelessWidget {
             SizedBox(
               width: 40,
             ),
-            InkWell(
-              onTap: () {
-                Navigator.pushReplacementNamed(context, '/myWork');
-              },
+            MaterialButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20))),
+              color: Colors.pink,
               child: Text(
                 "My Work",
-                style:
-                    TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+                style: TextStyle(color: Colors.white),
               ),
+              onPressed: () {},
             ),
           ],
         )
@@ -82,7 +82,7 @@ class DesktopNavBar extends StatelessWidget {
   }
 }
 
-class MobileNavBar extends StatelessWidget {
+class MobileNavBarMyWork extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -91,7 +91,7 @@ class MobileNavBar extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            "Anil kumar Portfolio",
+            "Anil kumar Website",
             style: TextStyle(
                 fontWeight: FontWeight.bold, fontSize: 30, color: Colors.white),
           ),
