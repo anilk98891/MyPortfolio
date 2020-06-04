@@ -39,8 +39,7 @@ class _MyWorkScreenState extends State<MyWorkScreen> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30),
                   child: LayoutBuilder(builder: (context, constraint) {
-                    if (constraint.maxWidth >= 800 &&
-                        constraint.maxWidth <= 1200) {
+                    if (constraint.maxWidth >= 800) {
                       return DesktopGrid(workModel);
                     } else {
                       return MobileGrid(workModel);
@@ -67,7 +66,6 @@ class DesktopGrid extends StatelessWidget {
       height: (workDetailsObj.length * 170).toDouble(),
       child: GridView.builder(
           itemCount: workDetailsObj.length,
-          physics: new NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3, crossAxisSpacing: 10, mainAxisSpacing: 10),
           itemBuilder: (context, index) {
@@ -116,12 +114,11 @@ class MobileGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Container(
-      height: (workDetailsObj.length * 170).toDouble(),
+      height: (MediaQuery.of(context).size.height - 30).toDouble(),
       child: GridView.builder(
           itemCount: workDetailsObj.length,
-          physics: new NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3, crossAxisSpacing: 10, mainAxisSpacing: 10),
+              crossAxisCount: 2, crossAxisSpacing: 10, mainAxisSpacing: 10),
           itemBuilder: (context, index) {
             return GestureDetector(
               child: new Container(
